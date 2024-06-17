@@ -34,6 +34,16 @@ const weapons = [
      name: 'Superi-46',
      category: 'SMG',
      image: 'https://dotesports.com/wp-content/uploads/2024/05/mw3-best-superi-46-loadout-new-smg.jpg'},
+
+    {id: 8, 
+     name: 'SVA-545',
+     category: 'Assault',
+     image: 'https://imagedelivery.net/BN5t48p9frV5wW3Jpe6Ujw/sva-545-wzstats-7a931e/gunFullDisplay'},
+
+    {id: 9, 
+     name: 'MTZ-556',
+     category: 'Assault',
+     image: 'https://imagedelivery.net/BN5t48p9frV5wW3Jpe6Ujw/mtz-556/gunFullDisplay'},
 ];
 
 module.exports = weapons;
