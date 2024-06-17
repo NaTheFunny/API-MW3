@@ -4,7 +4,7 @@ const multer = require('multer');
 const app = express();
 
 app.use(express.json());
-
+//Agregar Imagen por Local (No lo estoy ocupando ya que lo agrego por URL)
 const upload = multer({ dest: 'uploads/' });
 
 const weapons = [
@@ -29,21 +29,22 @@ const weapons = [
      image: 'https://assetsio.gnwcdn.com/mw3-rival-9.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp'}
 ];
 
+//Obtener respuesta
 app.get('/',(req,res) =>{
     res.send('Node JS api');
 });
-
-app.get('/api/weapons/', (req,res) =>{
+//Obtener respuesta de armas
+app.get('/weapons/', (req,res) =>{
     res.send(weapons);
 })
-
-app.get('/api/weapons/:id',(req, res)=>{
+//Obtener arma por Id
+app.get('/weapons/:id',(req, res)=>{
     const weapon = weapons.find(w => w.id === parseInt(req.params.id));
     if (!weapon) return res.status(404).send('weapon is not found');
     else res.send(weapon);
 })
-
-app.post('/api/weapons', (req,res) =>{
+//Agregar un nuevo arma
+app.post('/weapons', (req,res) =>{
     const weapon = {
         id: weapons.length + 1,
         name: req.body.name,
@@ -53,8 +54,8 @@ app.post('/api/weapons', (req,res) =>{
     weapons.push(weapon);
     res.send(weapon);
 })
-
-app.delete('/api/weapons/:id',(req,res) =>{
+//Eliminar arma por id
+app.delete('/weapons/:id',(req,res) =>{
     const weapon = weapons.find(w => w.id === parseInt(req.params.id));
     if (!weapon) return res.status(404).send('weapon is not found');
 
@@ -62,6 +63,6 @@ app.delete('/api/weapons/:id',(req,res) =>{
     weapons.splice(index, 1);
     res.send(weapon);
 })
-
+//Iniciar Conexion a puerto 
 const port = process.env.port || 80;
 app.listen(port, () => console.log('Conectado al puerto '+port));
